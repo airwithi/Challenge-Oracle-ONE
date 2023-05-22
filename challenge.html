@@ -1,0 +1,102 @@
+<meta charset="UTF-8"> 
+
+<h1>Challenge</h1>
+
+<br>
+<br>
+
+<input name="texto" type="text" placeholder="Ingresa el texto aqui" id="textoInp"></input>
+
+<br>
+
+Solo letras minusculas y sin acentos
+
+<br>
+<br>
+
+<button name="botonEncriptar" id="botonEnc">Encriptar</button>
+
+<br>
+<br>
+
+<button name="botonDesencriptar"  id="botonDes">Desencriptar</button>
+
+<script>
+
+    function encriptar(){
+        var texto = entradaTexto.value;
+        var arreglo = texto.split("");
+        //Recorriendo el 
+        arreglo.forEach(function callback (elemento,indice,arreglo){
+            switch(elemento){
+                case "a":
+                    arreglo[indice] = "ai";
+                    break;
+                case "e":
+                    arreglo[indice] = "enter";
+                    break;
+                case "i":
+                    arreglo[indice] = "imes";
+                    break;
+                case "o":
+                    arreglo[indice] = "ober";
+                    break;
+                case "u":
+                    arreglo[indice] = "ufat";
+                    break;
+            }
+        });
+
+        //Uniendo el arreglo en una sola cadena
+        //Mostrando mensaje encriptado en un alert
+        alert(arreglo.join(""));
+    }
+
+    function desencriptar(){
+        let texto = entradaTexto.value;
+        var arreglo = texto.split("");
+        arreglo.forEach(function callback (elemento,indice,arreglo){
+            switch(elemento){
+                case "a":
+                    if(arreglo[indice+1] == "i"){
+                        arreglo.splice(indice+1,1); //Eliminando el elemento indice+1 del arreglo
+                    }
+                    break;
+                case "e":
+                    if(arreglo[indice+1] == "n" && arreglo[indice+2] == "t" && arreglo[indice+3] == "e" && arreglo[indice+4] == "r"){
+                        arreglo.splice(indice+1,4); //Eliminando los elementos nter del arreglo
+                    }
+                    break;
+                case "i":
+                    if(arreglo[indice+1] == "m" && arreglo[indice+2] == "e" && arreglo[indice+3] == "s"){
+                        arreglo.splice(indice+1,3); //Eliminando los elementos nter del arreglo
+                    }
+                    break;
+                case "o":
+                    if(arreglo[indice+1] == "b" && arreglo[indice+2] == "e" && arreglo[indice+3] == "r"){
+                        arreglo.splice(indice+1,3); //Eliminando los elementos nter del arreglo
+                    }
+                    break;
+                case "u":
+                    if(arreglo[indice+1] == "f" && arreglo[indice+2] == "a" && arreglo[indice+3] == "t"){
+                        arreglo.splice(indice+1,3); //Eliminando los elementos nter del arreglo
+                    }
+                    break;
+            }
+        });
+        
+        //Uniendo el arreglo en una sola cadena
+        //Mostrando mensaje encriptado en un alert
+        alert(arreglo.join(""));
+    }
+
+    var botonEncriptarJS = document.getElementById("botonEnc");
+    var botonDesencriptarJS = document.getElementById("botonDes");
+    var entradaTexto = document.getElementById("textoInp");
+
+    botonEncriptarJS.onclick = encriptar;
+    botonDesencriptarJS.onclick = desencriptar;
+
+
+
+</script>
